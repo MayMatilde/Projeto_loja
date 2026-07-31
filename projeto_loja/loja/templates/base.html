@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loja Masculina</title>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <a href="/">Início</a>
+
+        <a href="/loja/produtos/">Produtos</a>
+
+        {% if user.is_authenticated %}
+
+        <span>Olá, {{ user.username }}</span>
+
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+
+            {% csrf_token %}
+
+            <button type="submit">Sair</button>
+
+        </form>
+
+        {% else %}
+
+        <a href="{% url 'login' %}">Entrar</a>
+
+        <a href="{% url 'cadastro' %}">Cadastrar</a>
+
+        {% endif %}
+
+    </nav>
+
+
+    <hr>
+
+
+    {% block content %}{% endblock %}
+
+</body>
+
+</html>
