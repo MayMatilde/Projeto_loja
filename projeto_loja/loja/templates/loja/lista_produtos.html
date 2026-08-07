@@ -1,0 +1,15 @@
+{% extends 'loja/base.html' %}
+{% block title %}Lista de Produtos{% endblock %}
+{% block content %}
+<h2>Produtos cadastrados</h2>
+<p><a href="/produtos/novo/">Cadastrar novo produto</a></p>
+<ul>
+    {% for produto in produtos %}
+    <li>
+        <a href="/produtos/{{ produto.id }}/">{{ produto.nome }}</a>
+        | <a href="/produtos/editar/{{ produto.id }}/">Editar</a>
+        | <a href="/produtos/excluir/{{ produto.id }}/">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
